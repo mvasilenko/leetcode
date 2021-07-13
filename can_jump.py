@@ -1,14 +1,15 @@
 import unittest
 from typing import List
 
+
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         i = j = 0
         while i < len(nums)-1 and i <= j:
             j = max(j, i+nums[i])
-            #print(i,j)
+            # print(i,j)
             i += 1
-        #print("end")
+        # print("end")
         return j >= len(nums)-1
 
 
