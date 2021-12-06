@@ -1,8 +1,10 @@
 import unittest
 
+# https://leetcode.com/problems/is-subsequence/discuss/87254/Straight-forward-Java-simple-solution
 # two pointers approach
 # iterate through t and increment s if the current s matches t.
 # If you exhaust t you have failed, if you exhaust s you have succeeded.
+
 
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
@@ -23,6 +25,7 @@ class Solution:
 
 class TestSolution(unittest.TestCase):
     solution = Solution()
+
     def test_1(self):
         self.assertTrue(self.solution.isSubsequence("abc", "ahbgdc"))
 
@@ -34,6 +37,7 @@ class TestSolution(unittest.TestCase):
 
     def test_4(self):
         self.assertTrue(self.solution.isSubsequence("b", "abc"))
+
 
 if __name__ == "__main__":
     unittest.main()
