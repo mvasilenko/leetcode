@@ -16,19 +16,19 @@ class Solution:
 
     def rotate(self, matrix: List[List[int]]) -> List[List[int]]:
         n = len(matrix)
-        for i in range(n//2 + n % 2):  # 0 1
-            for j in range(n//2):  # 0
-                #print(f"i={i} j={j}")                                        # 1st pass # 2nd pass
+        for i in range(n//2 + n % 2):  # range(2) -> 0 1
+            for j in range(n//2):  # range(1) -> 0
+                # print(f"i={i} j={j}")                                        # 1st pass # 2nd pass
                 # print(f"save tmp [{n-1-j}][{i}] {matrix[n-1-j][i]}")        # [2][0] # [2][1]
                 # print(f"next is [{n-1-i}][{n-1-j}] {matrix[n-1-i][n-1-j]}") # [2][2] # [1][2]
                 # print(f"next is [{j}][{n-1-i}] {matrix[j][n-1-i]}")         # [0][2] # [0][1]
                 # print(f"next is [{i}][{j}] {matrix[i][j]}")                 # [0][0] # [1][0]
 
-                tmp = matrix[n-1-j][i]
-                matrix[n - 1 - j][i] = matrix[n-1-i][n-1-j]
-                matrix[n - 1 - i][n - 1 - j] = matrix[j][n-1-i]
-                matrix[j][n - 1 - i] = matrix[i][j]
-                matrix[i][j] = tmp
+                tmp = matrix[n-1-j][i]                           # save 7
+                matrix[n - 1 - j][i] = matrix[n-1-i][n-1-j]      # 9 -> 7
+                matrix[n - 1 - i][n - 1 - j] = matrix[j][n-1-i]  # 3 -> 9
+                matrix[j][n - 1 - i] = matrix[i][j]              # 1 -> 3
+                matrix[i][j] = tmp                               # 7 -> 1a
 
         return matrix
 
