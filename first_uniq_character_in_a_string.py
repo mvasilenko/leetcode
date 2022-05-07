@@ -10,7 +10,7 @@ class Solution:
         for i, c in enumerate(s):
             if d[c] == 1:
                 return i
-        return 0
+        return -1
 
 
 class TestSolution(unittest.TestCase):
@@ -23,8 +23,10 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(self.solution.firstUniqChar("loveleetcode"), 2)
 
     def test_3(self):
-        self.assertEqual(self.solution.firstUniqChar("aabb"), 0)
+        self.assertEqual(self.solution.firstUniqChar("aabb"), -1)
 
+    def test_4(self):
+        self.assertEqual(self.solution.firstUniqChar("abcdefgh"), 0)
 
 if __name__ == "__main__":
     unittest.main()
