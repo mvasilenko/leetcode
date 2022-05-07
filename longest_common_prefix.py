@@ -5,30 +5,29 @@ from typing import List
 
 class Solution:
     def longestCommonPrefixNaive(self, strs: List[str]) -> str:
-        def longestCommonPrefix(self, strs: List[str]) -> str:
-            prefix = ""
-            shortest = math.inf
+        prefix = ""
+        shortest = math.inf
+        for s in strs:
+            shortest_len = min(shortest, len(s))
+        # print(shortest_len)
+        continue_search = True
+        while len(prefix) < shortest_len and continue_search and shortest_len > 0:
+            # print(f"len(prefix)={len(prefix)}")
+            if len(strs[0]) > len(prefix):
+                prefix += strs[0][len(prefix)]
+            else:
+                break
             for s in strs:
-                shortest_len = min(shortest, len(s))
-            # print(shortest_len)
-            continue_search = True
-            while len(prefix) < shortest_len and continue_search and shortest_len > 0:
-                # print(f"len(prefix)={len(prefix)}")
-                if len(strs[0]) > len(prefix):
-                    prefix += strs[0][len(prefix)]
-                else:
+                # print(f"s[0:len(prefix)]={s[0:len(prefix)]} prefix={prefix}")
+                if not s.startswith(prefix):
+                    # print("break")
+                    continue_search = False
+                    if len(prefix) > 0:
+                        prefix = prefix[:-1:]
+                    # print(f"return {prefix}")
                     break
-                for s in strs:
-                    # print(f"s[0:len(prefix)]={s[0:len(prefix)]} prefix={prefix}")
-                    if not s.startswith(prefix):
-                        # print("break")
-                        continue_search = False
-                        if len(prefix) > 0:
-                            prefix = prefix[:-1:]
-                        # print(f"return {prefix}")
-                        break
 
-            return prefix
+        return prefix
 
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if not strs:
